@@ -15,14 +15,13 @@ function getData(url, callback) {
     path: u.path,
     headers: {
       Date: new Date(),
-      Host: 'list.jd.com',
       'Cache-Control': 'no-cache',
       'Postman-Token': 'bc29e755-3564-da66-b879-12bbcb6fbe53'
     }
   }
 
   let data = ''
-  https.get(url, (res) => {
+  https.get(options, (res) => {
     const statusCode = res.statusCode;
     const contentType = res.headers['content-type'];
 
@@ -172,9 +171,11 @@ function main(){
     i++;
     if (i > pages) {
       clearInterval(inter);
-      console.log(immutableData.ID.length);
-      save_computer(immutableData, mutableData);
-      // closeDB()
+      setTimeout(() => {
+        console.log(immutableData.ID.length);
+        save_computer(immutableData, mutableData)
+        // closeDB()
+      }, 2000)
     }
   }, intervaltime)
 }

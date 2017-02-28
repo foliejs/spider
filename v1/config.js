@@ -11,8 +11,13 @@ const config = {
   },
   mongoDB: {
     url: 'mongodb://localhost:27017/test',
+  },
+  getHeaders(){
+    return {
+      Date: new Date(),
+      'Cache-Control': 'no-cache',
+      'Postman-Token': 'bc29e755-3564-da66-b879-12bbcb6fbe53' }
   }
-  // sourceSite: 'https://www.jd.com'
 }
 
 module.exports = config
